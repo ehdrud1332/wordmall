@@ -1,13 +1,24 @@
 import React from 'react';
 import { FlatList, Text } from 'react-native';
-import {} from 'react-redux'
+import { useSelector } from 'react-redux'
 
-const MyComponent = () => {
+
+const ProductsOverviewScreen = () => {
+
+    // useSelector를 통해서 전역적으로 rootReducer에 등록된 products reducer를 사용할 수 있습니다.
+    const products = useSelector((state) => state.products.availableProducts);
+
     return (
-        <div>
-
-        </div>
+        <FlatList
+            data={products}
+            keyExtractor={(item) => item.id}
+            renderItem={(itemData) => <Text>{itemData.item.title}</Text>}
+        />
     );
 };
 
-export default MyComponent;
+ProductsOverviewScreen.navigationOptipns = {
+    headerTitle: 'All Products'
+}
+
+export default ProductsOverviewScreen;
