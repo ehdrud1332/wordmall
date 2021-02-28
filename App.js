@@ -1,21 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text } from 'react-native';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import productReducer from './store/reducers/products';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+// 초기 상태값을 combineReducers를 이용해서 상수화
+const rootReducer = combineReducers({
+  products: productReducer
 });
+
+// createStore를 이용해 store생성
+const store = createStore(rootReducer);
+
+const App = () => {
+    return (
+        <Provider store={store}>
+          <View>
+              <Text>테스트입니다. 테스트</Text>
+          </View>
+        </Provider>
+    );
+};
+
+export default App;
