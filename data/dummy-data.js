@@ -2,10 +2,11 @@ import Product from '../models/product';
 
 const PRODUCTS = [
     new Product(
-        'pl',
-        'ul',
+        'p1',
+        'u1',
         'Red Shirt',
-        'https://5.imimg.com/data5/XP/PH/MY-57047128/round-neck-t-shirt-500x500.jpg',
+        'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+        'A red t-shirt, perfect for days with non-red weather.',
         29.99
     )
 ];

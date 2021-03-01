@@ -4,6 +4,7 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 import productReducer from './store/reducers/products';
+import ShopNavigator from "./navigation/ShopNavigator";
 
 // 초기 상태값을 combineReducers를 이용해서 상수화
 const rootReducer = combineReducers({
@@ -16,9 +17,7 @@ const store = createStore(rootReducer);
 const App = () => {
     return (
         <Provider store={store}>
-          <View>
-              <Text>테스트입니다. 테스트</Text>
-          </View>
+          <ShopNavigator />
         </Provider>
     );
 };

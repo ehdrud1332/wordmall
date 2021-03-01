@@ -1,11 +1,11 @@
 import React from 'react';
-import { FlatList, Text } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { useSelector } from 'react-redux'
 
 
 const ProductsOverviewScreen = () => {
 
-    // useSelector를 통해서 전역적으로 rootReducer에 등록된 products reducer를 사용할 수 있습니다.
+    // useSelector를 통해서 전역적으로 rootReducer에 등록된 products reducer를 사용할 수 있다.
     const products = useSelector((state) => state.products.availableProducts);
 
     return (
