@@ -1,30 +1,49 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Button } from 'react-native';
+import {
+    View,
+    Text,
+    Image,
+    StyleSheet,
+    Button,
+    TouchableOpacity,
+    TouchableNativeFeedback,
+    Platform
+} from 'react-native';
 
 import Colors from '../../constants/Color';
 
 // 하나의 양식이 있고, 이것을 반복하는 형식이 있다면, components 객체를 따로 만드는 것이 좋다.
 const ProductItem = (props) => {
+
+    let TouchableCmp = TouchableOpacity;
+    if (Platform.OS === 'android' && Platform.Version >= 21) {
+        TouchableCmp = TouchableNativeFeedback;
+    }
+
     return (
         <View style={styles.product}>
-            <View style={styles.imageContainer}>
-                <Image style={styles.image} source={{ uri: props.image }}/>
-            </View>
-            <View style={styles.details}>
-                <Text style={styles.title}>{props. title}</Text>
-                <Text style={styles.price}>${props.price.toFixed(2)}</Text>
-            </View>
-            <View style={styles.actions}>
-                <Button
-                    color={Colors.primary}
-                    title='View Details'
-                    // onPress={props.onViewDetail}
-                />
-                <Button
-                    color={Colors.primary}
-                    title='To Cart'
-                    // onPress={props.onAddToCart}
-                />
+            <View style={styles.touchable}>
+                <TouchableCmp onPress={props.onViewDetail} userForeground>
+                    <View style={styles.imageContainer}>
+                        <Image style={styles.image} source={{ uri: props.image }}/>
+                    </View>
+                    <View style={styles.details}>
+                        <Text style={styles.title}>{props. title}</Text>
+                        <Text style={styles.price}>${props.price.toFixed(2)}</Text>
+                    </View>
+                    <View style={styles.actions}>
+                        <Button
+                            color={Colors.primary}
+                            title='View Details'
+                            onPress={props.onViewDetail}
+                        />
+                        <Button
+                            color={Colors.primary}
+                            title='To Cart'
+                            onPress={props.onAddToCart}
+                        />
+                    </View>
+                </TouchableCmp>
             </View>
         </View>
     );
@@ -72,7 +91,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: '25%',
         paddingHorizontal: 20
-    }
+    },
+    touchable: {
+        borderRadius: 10,
+        overflow: 'hidden'
+    },
 });
 
 export default ProductItem;
