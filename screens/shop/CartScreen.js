@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, Button, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Colors from '../../constants/Color';
 import CartItem from '../../components/shop/CartItem';
@@ -21,6 +21,8 @@ const CartScreen = (props) => {
         }
         return transFormedCartItems;
     })
+
+    const dispatch = useDispatch();
 
     return (
         <View style={styles.screen}>
@@ -50,7 +52,14 @@ const CartScreen = (props) => {
                     />
                 )}
             />
-
+            <Button
+                color={Colors.accent}
+                title='바로주문'
+                disabled={cartItems.length === 0}
+                onPress={() => {
+                    dispatch(orderActions.addOrder(cartItems, cartTotalAmount));
+                }}
+            />
         </View>
     );
 };

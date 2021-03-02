@@ -11,8 +11,8 @@ import Colors from '../constants/Color';
 // stackNavigator 구성하고 메인화면은 ProductsOverviewScreen을 보여준다.
 const ProductsNavigator = createStackNavigator(
     {
-        ProductsOverview: ProductsOverviewScreen,
         CartScreen: CartScreen,
+        ProductsOverview: ProductsOverviewScreen,
         ProductDetail:  ProductDetailScreen,
     },
     {

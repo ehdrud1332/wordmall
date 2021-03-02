@@ -6,11 +6,13 @@ import { Provider } from 'react-redux';
 import productReducer from './store/reducers/products';
 import ShopNavigator from "./navigation/ShopNavigator";
 import cartReducer from './store/reducers/cart';
+import orderReducer from './store/reducers/order';
 
 // 초기 상태값을 combineReducers를 이용해서 상수화
 const rootReducer = combineReducers({
     products: productReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    order: orderReducer
 });
 
 // createStore를 이용해 store생성
