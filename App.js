@@ -19,7 +19,7 @@ const store = createStore(rootReducer);
 const App = () => {
     return (
         <Provider store={store}>
-          <ShopNavigator />
+            <ShopNavigator />
         </Provider>
     );
 };
